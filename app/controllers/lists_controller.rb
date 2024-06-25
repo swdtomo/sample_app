@@ -3,7 +3,7 @@ class ListsController < ApplicationController
     #Viewへ渡すためのインスタンス変数に空のModelオブジェクトを生成する
     @list = List.new
   end
-  
+
   def create
     # 1.&2. データを受け取り新規登録するためのインスタンス作成
     list = List.new(list_params)
@@ -30,10 +30,16 @@ class ListsController < ApplicationController
    list.update(list_params)
    redirect_to list_path(list.id)
   end
+
+   def destroy
+    list = List.find(params[:id])
+    list.destroy
+    redirect_to '/lists'
+  end
 end
 
  private
  #ストロングパロメータ
  def list_params
-    params.require(:list).permit(:title, :body)
+    params.require(:list).permit(:title, :body, :image)
   end
