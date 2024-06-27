@@ -43,6 +43,8 @@ ActiveRecord::Schema.define(version: 2024_06_24_113547) do
   create_table "lists", force: :cascade do |t|
     t.string "title"
     t.string "body"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
